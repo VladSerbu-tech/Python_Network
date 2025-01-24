@@ -1,0 +1,95 @@
+# f = open('configuration.txt', 'r' )
+# content = f.read(5)
+# print(content)
+
+# content = f.read(3)
+# print(content)
+
+# print(f.tell())
+
+
+# f.seek(2)
+# content = f.read(3)
+# print(content)
+
+# f.seek(0)
+# content = f.read(3)
+# print(content)
+
+
+
+f = open("configuration.txt")
+print(f.read())
+
+#do stuff
+print("*" * 50)
+
+f.seek(0)
+print(f.read())
+
+print("*" * 50)
+
+f.seek(0)
+print(f.tell())
+
+
+with open("configuration.txt")as file:
+    content = file.read()
+    print(content)
+    
+print(file.closed)    
+
+# 1.file.read().splitlines()
+
+with open('configuration.txt') as file:
+    content = file.read().splitlines()
+    print(content)
+
+print("#" * 50)
+
+
+#2.file.readlines()
+with open('configuration.txt') as file:
+    content = file.readlines()
+    print(content) 
+
+print("#" * 50)
+
+#2a) file.readline() "none s at the end "
+with open('configuration.txt') as file:
+    print(file.readline(), end = "")
+    print(file.readline())
+
+print("#" * 50)
+
+#3. list(f)
+with open('configuration.txt') as file:
+    print(list(file))
+    
+print("#" * 50)    
+# iterate over a file
+
+with open('configuration.txt') as file:
+    for line in file:
+        print(line, end = "")
+
+
+
+#Writing to text files
+
+with open('myfile.txt', 'w') as file:
+    file.write('Just a line.')
+
+with open('myfile.txt', 'a') as file:
+    file.write('Some txt')
+    file.write('Some txt')
+    
+    
+with open('myfile.txt', 'r+') as file:
+    file.seek(5)
+    file.write('26598')
+    file.write('Line add at the begining of a file')
+    file.write('Some txt') 
+    file.seek(10)
+    content = file.read()
+print(len(content))            
