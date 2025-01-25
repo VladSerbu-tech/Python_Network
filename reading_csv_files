@@ -19,4 +19,36 @@ max_1958 = max(year_1958.values())
 for k, v in year_1958.items():
     if max_1958 == v:
         print(f'Busiest Month in 1958: {k}, Flights: {v.strip()}')
-              
+
+
+import csv
+with open('people.csv', 'a', newline = '') as csvfile:
+    writer = csv.writer(csvfile)
+    csvdata = (5, 'Ana', 'Amsterdam')
+    writer.writerow(csvdata)
+    
+with open('numbers.csv', 'w') as file:
+    writer = csv.writer(file)
+    writer.writerow(['x', 'x**2','x**3', 'x**4'])
+    for x in range(1, 101):
+        writer.writerow([x, x**2,x**3, x**4])
+
+
+import csv
+with open('passwd.csv', 'r') as file:
+    reader = csv.reader(file, delimiter=':', lineterminator='\n')
+    for x in reader:
+         print(x)
+ 
+csv.register_dialect('hashes', delimiter='#', quoting=csv.QUOTE_NONE, lineterminator='/n')
+
+with open('items.csv', 'r') as file:
+    reader = csv.reader(file, dialect='hashes')
+    
+    for x in reader:
+        print(x)
+    
+with open('items.csv', 'a', newline='') as f:
+    writer = csv.writer(f)
+    writer.writerow(('spoon', 5, 10.8))
+    
