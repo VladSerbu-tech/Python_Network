@@ -1,0 +1,28 @@
+with open('macs.txt', 'r') as file:
+    content = file.read().split()
+    content = list(set(content))
+with open('mac_unique.txt', 'w', newline='') as file:
+    for mac in content:
+        file.write(f'{mac}\n')
+
+
+
+with open('sample_file.txt', 'r') as file:
+    content = file.readlines()
+    content_string = ' '.join(content)
+    print(content_string)
+
+
+
+with open('file.txt', 'r') as f:
+    content_list = f.readlines()
+    print(content_list)
+    
+    cleaned_lines = []
+    for line in content_list:
+        if line.strip():  # If the line is not empty after stripping spaces
+            cleaned_lines.append(line)  # Add it to the cleaned list
+
+with open('file_without_blanks.txt', 'w') as file:
+    file.write(''.join(cleaned_lines))
+    
