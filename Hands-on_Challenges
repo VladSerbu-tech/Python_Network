@@ -5,7 +5,7 @@ with open('mac_unique.txt', 'w', newline='') as file:
     for mac in content:
         file.write(f'{mac}\n')
 
-
+###############################################################
 
 with open('sample_file.txt', 'r') as file:
     content = file.readlines()
@@ -13,7 +13,7 @@ with open('sample_file.txt', 'r') as file:
     print(content_string)
 
 
-
+####################################################################
 with open('file.txt', 'r') as f:
     content_list = f.readlines()
     print(content_list)
@@ -25,4 +25,150 @@ with open('file.txt', 'r') as f:
 
 with open('file_without_blanks.txt', 'w') as file:
     file.write(''.join(cleaned_lines))
+###################################################################    
+def tail(file, n):
+    with open(file, 'r') as f:
+        #reading a file in a list
+        content = f.read().splitlines()
+        #getting the last n elements of the list
+        last = content[len(content) - n:]
+        #print(last)
+        #concateneting the list back into a string
+        my_string = ''.join(last)
+        return(my_string)
     
+t = tail('sample_file.txt', 3)
+print(t)
+
+######################################################################
+
+import time
+def tail(file, n):
+    with open(file, 'r') as f:
+        #reading a file in a list
+        content = f.read().splitlines()
+        #getting the last n elements of the list
+        last = content[len(content) - n:]
+        #print(last)
+        #concateneting the list back into a string
+        my_string = ''.join(last)
+        return(my_string)
+    
+while True:
+    t = tail('sample_file.txt', 3)
+    print(t)
+    time.sleep(3)
+    print('')
+
+#######################################################################
+
+def wc_linux(file_path):
+    line_count = 0
+    word_count = 0
+    character_count = 0
+    
+    with open(file_path, 'r') as file:
+        for line in file:
+            line_count += 1  # Increment line count
+            word_count += len(line.split())
+            word_count += len(line.split())# Increment word count for this line
+            character_count += len(line)  # Increment character count for this line
+            
+    return line_count, word_count, character_count
+
+# Example usage
+file_path = 'sample_file.txt'
+lines, words, chars = wc_linux(file_path)
+print(f"Lines: {lines}, Words: {words}, Characters: {chars}")
+
+################################################################################
+
+def wc(file):
+    with open(file,'r') as f:
+        content = f.read().splitlines()
+        lines = len(content)
+        
+        words = 0
+        for x in content:
+            words += len(x.split())
+            
+        chars = 0
+        for y in content:
+            chars += len(list(y))
+            
+        return lines, words, chars
+
+print(wc('sample_file.txt'))
+
+##############################################################
+with open('banking.txt', 'r') as file:
+    content = file.read().splitlines()
+    deposit, withdrawal = 0, 0
+    
+    for item in content:
+        temp = item.split(':')
+        if temp[0] == 'D':
+            deposit += int(temp[1])
+        elif temp[0] == 'W':
+            withdrawal += int(temp[1])
+        else:
+            print(Error)
+        
+    balance = deposit - withdrawal
+    print(balance)
+#################################################################
+
+
+with open('a.txt') as f:
+    file1 = f.read().splitlines()
+
+with open('b.txt') as f:
+    file2 = f.read().splitlines()
+
+file = list(zip(file1, file2))
+
+i = 0
+for item in file:
+    i += 1
+    if item[0] != item[1]:
+        print(f'file1 ({i}): {item[0]}, file2 ({i}): {item[1]}')
+
+################################################################# 
+
+new_dict = {}
+
+with open('american-english.txt', 'r') as file:
+    for i in file:
+        words = i.strip().split()
+        for x in words:
+            new_dict[x] = len(x)
+
+print(new_dict)
+
+##################################################################  
+
+with open('american-english.txt') as f:
+    words = f.read().splitlines()
+  
+
+
+    words_and_length = dict()
+    for w in words:
+        words_and_length[w] = len(w)
+
+    for k, v in words_and_length.items():
+        print(f'{k} -> {v}')
+#####################################################################
+
+with open('american-english.txt') as file:
+    words = file.read().splitlines()
+    
+    words_and_lenght = dict()
+    for w in words:
+        words_and_lenght[w] = len(w)
+
+        
+words_list = sorted(words_and_length.items(), key=lambda x:x[1], reverse=True)
+print(words_list[:100])
+
+#########################################################################
