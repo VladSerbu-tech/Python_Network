@@ -172,3 +172,20 @@ words_list = sorted(words_and_length.items(), key=lambda x:x[1], reverse=True)
 print(words_list[:100])
 
 #########################################################################
+
+import string
+
+letters = dict()
+
+for i in string.ascii_lowercase:
+    letters[i] = 0
+    
+
+with open('american-english.txt', 'r') as file:
+    for w in file:
+        for char in string.ascii_lowercase:
+            letters[char] += w.lower().count(char)
+
+
+print(letters.items(),'/n')
+print(sorted(letters.items(), key=lambda x:x[1], reverse=True))  
