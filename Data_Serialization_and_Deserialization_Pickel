@@ -1,0 +1,41 @@
+#################################
+## Data Serialization and Deserialization with Pickle
+#################################
+ 
+import pickle
+ 
+# Declaring a dictionary
+friends = {"Dan": (20, "London", 13242252), "Maria":[25, "Madrid", 34232424]}
+ 
+ 
+# Serializing the dictionary to binary file called `friends.dat`
+with open('friends.dat', 'wb') as f: # b -> binary mode
+    pickle.dump(friends, f)
+ 
+# Deserializing into a Python Object
+with open('friends.dat', 'rb') as f:
+    obj = pickle.load(f)
+ 
+    print(type(obj))    # => dict
+    print(obj)          # => {'Dan': (20, 'London', 13242252), 'Maria': [25, 'Madrid', 34232424]}
+
+# 1. What is Data Serialization?
+# Data serialization is the process of converting a data structure 
+# (like a list, dictionary, or custom object) 
+# into a format that can be easily stored or transferred. 
+# This allows you to save the data to a file, send it over a network, 
+# or save it to a database.
+
+# 2. What is Data Deserialization?
+# Deserialization is the opposite of serialization. 
+# It’s the process of converting the serialized (stored) 
+# data back into its original structure. 
+# So, you can load it back into your program and work with it.    
+
+# 1. Pickling (Serialization)
+# To serialize an object, you use pickle.dump() to write the object to a file 
+# or pickle.dumps() to get the serialized byte stream.
+
+# 2. Unpickling (Deserialization)
+# To deserialize, you can use pickle.load() to read an object from a file 
+# or pickle.loads() to load the object from a byte stream.
