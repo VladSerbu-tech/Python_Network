@@ -189,3 +189,27 @@ with open('american-english.txt', 'r') as file:
 
 print(letters.items(),'/n')
 print(sorted(letters.items(), key=lambda x:x[1], reverse=True))  
+###############################################################
+
+import csv
+
+people = [
+
+['Dan', 34, 'Bucharest'],
+
+['Andrei',21, 'London'],
+
+['Maria', 45, 'Paris']
+
+]
+
+with open('people1.csv', mode='w', newline='') as file:
+    csv_writing = csv.writer(file, delimiter=':')
+    csv_writing.writerows(people)
+    
+    
+
+with open('people1.csv', 'r') as f:
+    reader = csv.reader(f, delimiter=":")
+    for row in reader:
+        print(row)
